@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <p>This page turns violet when you press the V key</p>
+
+    <script>
+
+        function first(event) {
+                if (event.keyCode == 86) {
+                    document.body.style.background = "violet";
+                    var para = document.createElement("p");
+                    para.setAttribute("id", "clear");
+                    var text = document.createTextNode("THE COLOR WILL NOW CHANGE, Please don't hold it for too long");
+                    para.appendChild(text);
+                    document.body.appendChild(para);
+                }
+        }
+
+        function second(event) {
+            if (event.keyCode == 86) {
+                var element = document.getElementById("clear");
+                try {
+                    document.body.removeChild(element);
+                }
+                catch (TypeError) {
+
+                }
+                document.body.style.background = "red";
+                removeEventListener("keydown", first);
+                removeEventListener("keyup", second);
+            }
+            listen();
+        }
+
+        function listen() {
+            addEventListener("keydown", first);
+            addEventListener("keyup", second);
+        }
+        listen();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Javascript</title>
+</head>
+<body>
+    <script language="javascript" type="text/javascript">
+        //
+        function promptDirection(question) {
+            var result = prompt(question, "");
+            if (result.toLowerCase() == "left") return "L";
+            if (result.toLowerCase() == "right") return "R";
+            document.write("invalid entry");
+            throw new Error("Invalid direction: " + result);
+        }
+        function look() {
+            if (promptDirection("Which way?") == "L")
+                return "a house";
+            else
+                return "two angry bears";
+        }
+        try {
+            document.write("You see ", look());
+        } catch (error) {
+            document.write("Something went wrong: " + error);
+        }
+        
+
+
+
+        //
+    </script>
+</body>
+</html>

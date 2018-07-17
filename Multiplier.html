@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Javascript</title>
+</head>
+<body>
+    <script language="javascript" type="text/javascript">
+        //
+        function MultiplicatorUnitFailure(message) {
+            this.message = message;
+            this.stack = (new Error).stack;
+        }
+        MultiplicatorUnitFailure.prototype = Object.create(Error.prototype);
+        MultiplicatorUnitFailure.prototype.name = "Samson's Exeception";
+        function primitiveMultiply(a, b) {
+            if (isNaN(a) || isNaN(b)) {
+                throw new MultiplicatorUnitFailure("value(s) is invalid: " + a + " " + b);
+            }
+            var result = a * b;
+            return result;
+        }
+        
+        for (;;) {
+            try {
+                var text = prompt("Enter numbers divided with a whitespace: ", "");
+                var values = text.split(" ");
+                values[0].trim();
+                values[1].trim();
+                 var res = primitiveMultiply(values[0], values[1]);
+                document.write("The numbers are Valid. Result is ", res);
+                break;
+            } catch (e) {
+                if (e instanceof MultiplicatorUnitFailure) {
+                    document.writeln("is An instance of MultiplicatorUnitFailure: ", e instanceof MultiplicatorUnitFailure)
+                    
+                }
+                document.writeln("Invalid Number entered, Keep trying. ;-)");
+                document.writeln(e.stack);
+            }
+        }
+        
+
+
+
+        //
+    </script>
+</body>
+</html>
